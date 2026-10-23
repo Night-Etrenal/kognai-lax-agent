@@ -1,0 +1,20 @@
+{
+  "name": "kognai-lax-agent",
+  "version": "1.0.0",
+  "description": "LAX registry agent by Night-Etrenal: prototypes for Kognai seats and LAX signing helpers",
+  "scripts": {
+    "test": "node --import tsx --test test/*.test.ts",
+    "coverage": "node --import tsx --test --experimental-test-coverage test/*.test.ts",
+    "typecheck": "tsc"
+  },
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "viem": "^2.57.10"
+  }
+}

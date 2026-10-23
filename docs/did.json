@@ -1,0 +1,13 @@
+{
+  "@context": ["https://www.w3.org/ns/did/v1", "https://w3id.org/security/suites/secp256k1recovery-2020/v2"],
+  "id": "did:web:night-etrenal.github.io:kognai-lax-agent",
+  "verificationMethod": [{
+    "id": "did:web:night-etrenal.github.io:kognai-lax-agent#owner",
+    "type": "EcdsaSecp256k1RecoveryMethod2020",
+    "controller": "did:web:night-etrenal.github.io:kognai-lax-agent",
+    "blockchainAccountId": "eip155:8453:0xAE2f938E70d0a56A7F2257d5f0EA441ec709a2d0"
+  }],
+  "authentication": ["did:web:night-etrenal.github.io:kognai-lax-agent#owner"],
+  "assertionMethod": ["did:web:night-etrenal.github.io:kognai-lax-agent#owner"],
+  "service": [{ "id": "did:web:night-etrenal.github.io:kognai-lax-agent#lax", "type": "LaxOffer", "serviceEndpoint": "https://night-etrenal.github.io/kognai-lax-agent/.well-known/lax-offer.json" }]
+}
