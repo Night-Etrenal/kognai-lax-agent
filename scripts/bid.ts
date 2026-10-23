@@ -5,10 +5,11 @@
 import { readFileSync } from 'node:fs';
 import { privateKeyToAccount } from 'viem/accounts';
 import { laxHeaders } from '../src/lax-sign.ts';
+import { loadKey } from '../src/key.ts';
 
 const [jobId, bidFile] = process.argv.slice(2);
 const body = JSON.parse(readFileSync(bidFile, 'utf8'));
-const acct = privateKeyToAccount(JSON.parse(readFileSync(process.env.LAX_KEY_FILE!, 'utf8')).private_key);
+const acct = privateKeyToAccount(loadKey());
 const path = `/jobs/${jobId}/bids`;
 const headers = await laxHeaders(acct, 'bid', 'POST', path, body);
 const r = await fetch(`https://lax.kognai.ai/registry${path}`, {

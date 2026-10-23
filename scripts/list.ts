@@ -8,6 +8,7 @@ import { readFileSync } from 'node:fs';
 import { randomBytes } from 'node:crypto';
 import { privateKeyToAccount } from 'viem/accounts';
 import { getAddress } from 'viem';
+import { loadKey } from '../src/key.ts';
 
 const URL_ = 'https://lax.kognai.ai/registry/offers';
 const USDC_BASE = '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913';
@@ -31,8 +32,7 @@ console.log('terms', { amount: a?.amount, asset: a?.asset, payTo: a?.payTo, netw
 if (!Object.values(checks).every(Boolean)) { console.log('ABORT: terms failed verification'); process.exit(2); }
 if (!pay) { console.log('dry run only; pass --pay to sign'); process.exit(0); }
 
-const key = JSON.parse(readFileSync(process.env.LAX_KEY_FILE!, 'utf8')).private_key as `0x${string}`;
-const acct = privateKeyToAccount(key);
+const acct = privateKeyToAccount(loadKey());
 const now = Math.floor(Date.now() / 1000);
 const authorization = {
   from: acct.address, to: getAddress(a.payTo), value: String(a.amount),
